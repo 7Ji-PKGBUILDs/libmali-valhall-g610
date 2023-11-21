@@ -47,7 +47,7 @@ else
 fi
 LD_LIBRARY_PATH="${GL4ES}${LIBMALI}:${LD_LIBRARY_PATH}"
 
-if [[ -f '/usr/lib/libdri2to3.so' ]]; then
+if [[ -f '/usr/lib/libdri2to3.so' ]] && [ "$TARGET" != "gbm" ]; then
   DRI2TO3='/usr/lib/libdri2to3.so:'
 else
   DRI2TO3=
