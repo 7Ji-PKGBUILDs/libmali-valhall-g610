@@ -5,8 +5,8 @@ _model='mali-valhall-g610'
 _suffixes=(dummy gbm wayland-gbm x11-gbm x11-wayland-gbm)
 _repo='https://github.com/JeffyCN/mirrors'
 _libver_major=g13p0
-_libver_minor=6
-_lib_commit='9869c5a8aa0c103efac5a5d5eefe03468a6b8396'
+_libver_minor=10
+_lib_commit='bd6bb095780f880bf8f368ef6770563a313aebb4'
 _lib_parent="${_repo}/raw/${_lib_commit}/lib"
 _eula_commit='8605a3c81b60ac5bd8e492cc02e84a2e0aa8e524'
 
@@ -14,7 +14,7 @@ pkgbase="lib${_model}"
 pkgname=("${pkgbase}-base")
 # Actual version uses -, but it is forbidden in pkgver
 pkgver="${_libver_major}.${_libver_minor}"
-pkgrel=5
+pkgrel=1
 url='https://developer.arm.com/Processors/Mali-G610'
 license=('custom')
 source=(
@@ -28,18 +28,18 @@ sha256sums=(
   '564faeead74b92e6edd590a34b361994de9eff21586fd2e66097b33fe1639834'
 )
 sha256sums_aarch64=(
-  '5081b68111c6bf1367c55400d0f30824f25e79b78d8e790cd3b028db82fcd98e'
-  '0462d689f1c74b7008aa2a6a320d0050a655c74ff1e7451c393ccdbb22ba13e0'
-  '10f3666863ba677be1e3fb154217e6a5d97e8e2bce9a4444296e546f5afd30a2'
-  '232e4c8524162401094dbe0b95b2f6f150d038466d167222e0e11ce6e66fe6a2'
-  '2f72a27eefdff535abcdc075db08ed692f475a519c17f8df8f1ef4e3876310ca'
+  'a83746b3a9e3b70ada5441f44eae6f36a89c17f3f78b35fbfdf89af1e6988e9f'
+  'f329dd7809f3033b457d37209bce34a3e8e790e6126e215d1dff57c7a59c51bb'
+  '447dabfb1f3faa2aa4ee88aa9611840ff44635a1a3082b55d769900d6cd797f8'
+  '628fea07308dcca8c2fe9154cd62ba8a7dba0c5d6605e049deb9a8514624d562'
+  '3a6fcb0ada4c94410cca9f67634f45addde5202d14d52221bd0ad450200d2d2f'
 )
 sha256sums_armv7h=(
-  'c4200b7cef9700c2f6b3c49f08069f26d9c88fab20030a809409ecfe4926b31b'
-  '30333a051012f0812878bccd2e681acad44a40eb1321dc04d364086d8ef1e2c1'
-  '4451f43f72ccaf9e180696c0f98bd8e66acad8c382f930b4411966a4e4cbfc70'
-  '93ed59e572d1e0f177a23da8e24897f26b0eabfa297dd6e3b69ed23deb221774'
-  '4dfc362e92eb22bf9c8b016cd25c0417c28bbb43a6040e11689b573e0648b125'
+  'd453d1d322fd12f2d93f8b9e71c5bb96a38c3550c64f83c5aa23cd6852a5d1a9'
+  '40d45e5fdb8dfe2c5e3cf5fee517d4c2e38b89e2b3e65593575c9fb15db80269'
+  '39b29041225ec4e7fe0474f983c40acca659c1a02598d0f6727aee77f86e036b'
+  '34708b7738ed42b9fac1d48e995ca29f3cc52ce3641c286bedfc814bbf834f69'
+  '30007066c412aa5a6398d2fe128d909d3091e62bfa85d607482335f3635ddd3a'
 )
 arch=('x86_64' 'aarch64' 'armv7h') # Allow the wrapper to build on x86_64 for testing
 options=(!strip)
