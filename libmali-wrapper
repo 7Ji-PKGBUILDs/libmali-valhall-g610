@@ -23,8 +23,18 @@ case "${SUFFIX}" in
   x11-wayland-gbm)
     TARGET=x11-wayland-gbm
     ;;
-  *)
+  [xX]*)
     TARGET=x11-gbm
+    ;;
+  *)
+    LIBMALI_PATH=/usr/lib/mali-valhall-g610
+    if [[ -d "${LIBMALI_PATH}/x11-wayland-gbm" ]]; then
+      TARGET=x11-wayland-gbm
+    elif [[ -d "${LIBMALI_PATH}/wayland-gbm" ]] && [ -n "$WAYLAND_DISPLAY" ]; then
+      TARGET=wayland-gbm
+    elif [[ -d "${LIBMALI_PATH}/x11-gbm" ]] && [ -n "$DISPLAY" ]; then
+      TARGET=x11-gbm
+    fi
     ;;
 esac
 if [[ -z "$1" ]]; then
