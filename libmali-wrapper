@@ -1,6 +1,7 @@
 #!/bin/bash
 # Multi-call wrapper for libmali by 7Ji based on https://aur.archlinux.org/cgit/aur.git/tree/libmali?h=linux-radxa-rkbsp5-git
 NAME=$(basename "$0")
+LIBMALI_PATH=/usr/lib/%MODEL%
 if ! [[ "${NAME}" =~ ^libmali* ]]; then
   echo "ERROR: Helper script called as $0 (basename ${NAME}), please call it as libmali*"
   exit 1
@@ -27,13 +28,15 @@ case "${SUFFIX}" in
     TARGET=x11-gbm
     ;;
   *)
-    LIBMALI_PATH=/usr/lib/mali-valhall-g610
     if [[ -d "${LIBMALI_PATH}/x11-wayland-gbm" ]]; then
       TARGET=x11-wayland-gbm
     elif [[ -d "${LIBMALI_PATH}/wayland-gbm" ]] && [ -n "$WAYLAND_DISPLAY" ]; then
       TARGET=wayland-gbm
     elif [[ -d "${LIBMALI_PATH}/x11-gbm" ]] && [ -n "$DISPLAY" ]; then
       TARGET=x11-gbm
+    else
+      echo "ERROR: Failed to lookup libmali or display not initialized."
+      exit 1
     fi
     ;;
 esac
@@ -42,7 +45,7 @@ if [[ -z "$1" ]]; then
   exit 1
 fi
 
-LIBMALI=/usr/lib/"%MODEL%/${TARGET}"
+LIBMALI="${LIBMALI_PATH}/${TARGET}"
 if [[ ! -d "${LIBMALI}" ]]; then
   echo "ERROR: Failed to lookup libmali at '${LIBMALI}'"
   exit 1
