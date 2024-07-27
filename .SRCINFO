@@ -1,6 +1,6 @@
 pkgbase = libmali-valhall-g610
 	pkgver = g13p0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.arm.com/Processors/Mali-G610
 	arch = x86_64
 	arch = aarch64
